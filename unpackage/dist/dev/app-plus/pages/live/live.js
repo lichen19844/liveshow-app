@@ -1336,116 +1336,7 @@ var render = function() {
                   )
                 ]
               ),
-              _c(
-                "view",
-                { staticStyle: { height: "500rpx" } },
-                [
-                  _c(
-                    "scroll-view",
-                    {
-                      staticStyle: {
-                        width: "520rpx",
-                        height: "500rpx",
-                        backgroundColor: "rgba(255,255,255,.2)"
-                      },
-                      attrs: { scrollY: "true" }
-                    },
-                    [
-                      _c(
-                        "view",
-                        { staticClass: ["flex", "px-3", "align-center"] },
-                        [
-                          _c(
-                            "view",
-                            {
-                              staticClass: [
-                                "flex",
-                                "justify-between",
-                                "align-center",
-                                "rounded-circle"
-                              ],
-                              staticStyle: {
-                                width: "325rpx",
-                                backgroundImage:
-                                  "linear-gradient(to right, #BCABB1, #65AAF0)"
-                              }
-                            },
-                            [
-                              _c(
-                                "view",
-                                { staticClass: ["p"] },
-                                [
-                                  _c("u-image", {
-                                    staticClass: ["rounded-circle"],
-                                    staticStyle: {
-                                      width: "70rpx",
-                                      height: "70rpx"
-                                    },
-                                    attrs: {
-                                      src: "/static/tabbar/min.png",
-                                      mode: ""
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _c(
-                                "view",
-                                {
-                                  staticClass: [
-                                    "flex-1",
-                                    "flex-column",
-                                    "justify-center",
-                                    "align-start"
-                                  ]
-                                },
-                                [
-                                  _c(
-                                    "u-text",
-                                    { staticClass: ["text-white", "font"] },
-                                    [_vm._v("昵称")]
-                                  ),
-                                  _c(
-                                    "u-text",
-                                    { staticClass: ["text-white", "font-sm"] },
-                                    [_vm._v("送蛋糕")]
-                                  )
-                                ]
-                              ),
-                              _c(
-                                "view",
-                                { staticClass: ["p"] },
-                                [
-                                  _c("u-image", {
-                                    staticClass: ["rounded-circle"],
-                                    staticStyle: {
-                                      width: "70rpx",
-                                      height: "70rpx"
-                                    },
-                                    attrs: {
-                                      src: "/static/gift/1.png",
-                                      mode: ""
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ]
-                          ),
-                          _c(
-                            "u-text",
-                            {
-                              staticClass: ["text-warning", "font-lg", "mx-1"]
-                            },
-                            [_vm._v("X 12")]
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
+              _c("f-gift"),
               _c("view", {
                 staticClass: ["bg-warning"],
                 staticStyle: {
@@ -1456,7 +1347,8 @@ var render = function() {
                   height: "300rpx"
                 }
               })
-            ]
+            ],
+            1
           )
         ],
         1
@@ -1490,7 +1382,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _App
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("/* WEBPACK VAR INJECTION */(function(__f__) {Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  data: function data() {\n    return {\n      statusBarHeight: 0 };\n\n  },\n  onLoad: function onLoad() {\n    var res = uni.getSystemInfoSync();\n    __f__(\"log\", 'res', res, \" at pages/live/live.nvue:92\");\n    this.statusBarHeight = res.statusBarHeight;\n  },\n  methods: {} };exports.default = _default;\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/lib/format-log.js */ 9)[\"default\"]))//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvbGl2ZS9saXZlLm52dWUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFtRkE7QUFDQSxNQURBLGtCQUNBO0FBQ0E7QUFDQSx3QkFEQTs7QUFHQSxHQUxBO0FBTUEsUUFOQSxvQkFNQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLEdBVkE7QUFXQSxhQVhBLEUiLCJmaWxlIjoiOC5qcyIsInNvdXJjZXNDb250ZW50IjpbIjx0ZW1wbGF0ZT5cblx0PHZpZXcgY2xhc3M9XCJwYWdlXCI+XG5cdFx0PCEtLSDkuLTml7blkK/nlKggLS0+XG5cdFx0PHZpZGVvIGNsYXNzPVwiZmxleC0xXCIgc3JjPVwiaHR0cDovL2l2aS5idXB0LmVkdS5jbi9obHMvY2N0djFoZC5tM3U4XCIgYXV0b3BsYXkgY29udHJvbHM+PC92aWRlbz5cblx0XHQ8IS0tIOS4tOaXtuWFs+mXrSAtLT5cblx0XHQ8IS0tIDx2aWRlbyBjbGFzcz1cImZsZXgtMVwiIHNyYz1cImh0dHA6Ly9pdmkuYnVwdC5lZHUuY24vaGxzL2NjdHYxaGQubTN1OFwiIGF1dG9wbGF5IDpjb250cm9scz1cInRydWVcIj48L3ZpZGVvPiAtLT5cblx0XHQ8IS0tIOWktOmDqFx0dG9w5YC85piv5omL5py66K6+5aSH54q25oCB5qCP55qE6auY5bqmIC0tPlxuXHRcdDx2aWV3IHN0eWxlPVwicG9zaXRpb246IGZpeGVkO2xlZnQ6MDtyaWdodDowO1wiIDpzdHlsZT1cIid0b3A6JyArIHN0YXR1c0JhckhlaWdodCArICdweCdcIj5cblx0XHRcdDwhLS0g5Liq5Lq65L+h5oGv5ZKM6KeC55yL5oOF5Ya1IC0tPlxuXHRcdFx0PHZpZXcgc3R5bGU9XCJoZWlnaHQ6ODBycHg7XCIgY2xhc3M9XCJweC0yIGZsZXgganVzdGlmeS1iZXR3ZWVuIGFsaWduLWNlbnRlclwiPlxuXHRcdFx0XHQ8IS0tIOW3pui+uSAtLT5cblx0XHRcdFx0PHZpZXcgc3R5bGU9XCJ3aWR0aDozMjVycHg7YmFja2dyb3VuZC1jb2xvcjpyZ2JhKDAsMCwwLC40KTtcIiBjbGFzcz1cImZsZXgganVzdGlmeS1iZXR3ZWVuIGFsaWduLWNlbnRlciByb3VuZGVkLWNpcmNsZVwiPlxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwicFwiPlxuXHRcdFx0XHRcdFx0PGltYWdlIHNyYz1cIi9zdGF0aWMvdGFiYmFyL21pbi5wbmdcIiBtb2RlPVwiXCIgc3R5bGU9XCJ3aWR0aDo3MHJweDtoZWlnaHQ6NzBycHg7XCIgY2xhc3M9XCJyb3VuZGVkLWNpcmNsZVwiPjwvaW1hZ2U+XG5cdFx0XHRcdFx0PC92aWV3PlxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwiZmxleC0xIGZsZXgtY29sdW1uIGp1c3RpZnktY2VudGVyIGFsaWduLXN0YXJ0XCI+XG5cdFx0XHRcdFx0XHQ8dGV4dCBjbGFzcz1cInRleHQtd2hpdGUgZm9udFwiPuaYteensDwvdGV4dD5cblx0XHRcdFx0XHRcdDx0ZXh0IGNsYXNzPVwidGV4dC13aGl0ZSBmb250LXNtXCI+MTAwMDwvdGV4dD5cblx0XHRcdFx0XHQ8L3ZpZXc+XG5cdFx0XHRcdFx0PHZpZXcgY2xhc3M9XCJwXCI+XG5cdFx0XHRcdFx0XHQ8dmlldyBjbGFzcz1cInJvdW5kZWQtY2lyY2xlIGZsZXgganVzdGlmeS1jZW50ZXIgYWxpZ24tY2VudGVyIGJnLWRhbmdlclwiIHN0eWxlPVwid2lkdGg6NzBycHg7aGVpZ2h0OjcwcnB4O1wiPlxuXHRcdFx0XHRcdFx0XHQ8dGV4dCBjbGFzcz1cInRleHQtd2hpdGVcIj4rPC90ZXh0PlxuXHRcdFx0XHRcdFx0PC92aWV3PlxuXHRcdFx0XHRcdDwvdmlldz5cblx0XHRcdFx0PC92aWV3PlxuXHRcdFx0XHQ8IS0tIOWPs+i+uSAtLT5cblx0XHRcdFx0PHZpZXcgc3R5bGU9XCJ3aWR0aDozMjVycHg7YmFja2dyb3VuZC1jb2xvcjpyZ2JhKDAsMCwwLC40KTtcIiBjbGFzcz1cImZsZXgganVzdGlmeS1iZXR3ZWVuIGFsaWduLWNlbnRlciByb3VuZGVkLWNpcmNsZVwiPlxuXHRcdFx0XHRcdDxzY3JvbGwtdmlldyBzY3JvbGwteD1cInRydWVcIiBjbGFzcz1cImZsZXggZmxleC0xXCI+XG5cdFx0XHRcdFx0XHQ8dmlldyBjbGFzcz1cInBcIiB2LWZvcj1cImkgaW4gMjBcIiA6a2V5PVwiaVwiPlxuXHRcdFx0XHRcdFx0XHQ8aW1hZ2Ugc3JjPVwiL3N0YXRpYy90YWJiYXIvbWluLnBuZ1wiIG1vZGU9XCJcIiBzdHlsZT1cIndpZHRoOjcwcnB4O2hlaWdodDo3MHJweDtcIiBjbGFzcz1cInJvdW5kZWQtY2lyY2xlXCI+PC9pbWFnZT5cblx0XHRcdFx0XHRcdDwvdmlldz5cblx0XHRcdFx0XHQ8L3Njcm9sbC12aWV3PlxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwicFwiPlxuXHRcdFx0XHRcdFx0PHZpZXcgY2xhc3M9XCJyb3VuZGVkLWNpcmNsZSBmbGV4IGp1c3RpZnktY2VudGVyIGFsaWduLWNlbnRlciBiZy1kYW5nZXJcIiBzdHlsZT1cIndpZHRoOjcwcnB4O2hlaWdodDo3MHJweDtcIj5cblx0XHRcdFx0XHRcdFx0PHRleHQgY2xhc3M9XCJ0ZXh0LXdoaXRlIGZvbnQtc21cIj4xMDAwPC90ZXh0PlxuXHRcdFx0XHRcdFx0PC92aWV3PlxuXHRcdFx0XHRcdDwvdmlldz5cblx0XHRcdFx0PC92aWV3PlxuXHRcdFx0PC92aWV3PlxuXHRcdFx0PCEtLSDph5HluIEgLS0+XG5cdFx0XHQ8dmlldyBzdHlsZT1cImhlaWdodDo4MHJweDtcIiBjbGFzcz1cInB4LTIgbXktMlwiPlxuXHRcdFx0XHQ8dmlldyBzdHlsZT1cIndpZHRoOjMyNXJweDtcIiBjbGFzcz1cImZsZXgganVzdGlmeS1iZXR3ZWVuIGFsaWduLWNlbnRlciByb3VuZGVkLWNpcmNsZVwiPlxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwicFwiPlxuXHRcdFx0XHRcdFx0PHRleHQgY2xhc3M9XCJmb250LWxnIHRleHQtd2FybmluZ1wiPumHkeW4gTwvdGV4dD5cblx0XHRcdFx0XHQ8L3ZpZXc+XG5cdFx0XHRcdFx0PHZpZXcgY2xhc3M9XCJmbGV4LTEgZmxleC1jb2x1bW4ganVzdGlmeS1jZW50ZXIgYWxpZ24tc3RhcnRcIj5cblx0XHRcdFx0XHRcdDx0ZXh0IGNsYXNzPVwidGV4dC13aGl0ZSBmb250XCI+MTAwPC90ZXh0PlxuXHRcdFx0XHRcdDwvdmlldz5cblx0XHRcdFx0PC92aWV3PiBcblx0XHRcdDwvdmlldz5cblx0XHRcdDwhLS0g5pS25Yiw56S854mpIC0tPlxuXHRcdFx0PHZpZXcgc3R5bGU9XCJoZWlnaHQ6NTAwcnB4O1wiPlxuXHRcdFx0XHQ8c2Nyb2xsLXZpZXcgc2Nyb2xsLXk9XCJ0cnVlXCIgc3R5bGU9XCJ3aWR0aDo1MjBycHg7aGVpZ2h0OjUwMHJweDtiYWNrZ3JvdW5kLWNvbG9yOnJnYmEoMjU1LDI1NSwyNTUsLjIpO1wiPlxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwiZmxleCBweC0zIGFsaWduLWNlbnRlclwiPlxuXHRcdFx0XHRcdFx0PCEtLSDmmL7npLrosIHpgIHnmoTnpLzniakgLS0+XG5cdFx0XHRcdFx0XHQ8dmlldyBzdHlsZT1cIndpZHRoOjMyNXJweDtiYWNrZ3JvdW5kLWltYWdlOmxpbmVhci1ncmFkaWVudCh0byByaWdodCwgI0JDQUJCMSwgIzY1QUFGMCk7XCIgY2xhc3M9XCJmbGV4IGp1c3RpZnktYmV0d2VlbiBhbGlnbi1jZW50ZXIgcm91bmRlZC1jaXJjbGVcIj5cblx0XHRcdFx0XHRcdFx0PHZpZXcgY2xhc3M9XCJwXCI+XG5cdFx0XHRcdFx0XHRcdFx0PGltYWdlIHNyYz1cIi9zdGF0aWMvdGFiYmFyL21pbi5wbmdcIiBtb2RlPVwiXCIgc3R5bGU9XCJ3aWR0aDo3MHJweDtoZWlnaHQ6NzBycHg7XCIgY2xhc3M9XCJyb3VuZGVkLWNpcmNsZVwiPjwvaW1hZ2U+XG5cdFx0XHRcdFx0XHRcdDwvdmlldz5cblx0XHRcdFx0XHRcdFx0PHZpZXcgY2xhc3M9XCJmbGV4LTEgZmxleC1jb2x1bW4ganVzdGlmeS1jZW50ZXIgYWxpZ24tc3RhcnRcIj5cblx0XHRcdFx0XHRcdFx0XHQ8dGV4dCBjbGFzcz1cInRleHQtd2hpdGUgZm9udFwiPuaYteensDwvdGV4dD5cblx0XHRcdFx0XHRcdFx0XHQ8dGV4dCBjbGFzcz1cInRleHQtd2hpdGUgZm9udC1zbVwiPumAgeibi+ezlTwvdGV4dD5cblx0XHRcdFx0XHRcdFx0PC92aWV3PlxuXHRcdFx0XHRcdFx0XHQ8dmlldyBjbGFzcz1cInBcIj5cblx0XHRcdFx0XHRcdFx0XHQ8aW1hZ2Ugc3JjPVwiL3N0YXRpYy9naWZ0LzEucG5nXCIgbW9kZT1cIlwiIHN0eWxlPVwid2lkdGg6NzBycHg7aGVpZ2h0OjcwcnB4O1wiIGNsYXNzPVwicm91bmRlZC1jaXJjbGVcIj48L2ltYWdlPlxuXHRcdFx0XHRcdFx0XHQ8L3ZpZXc+XG5cdFx0XHRcdFx0XHQ8L3ZpZXc+XG5cdFx0XHRcdFx0XHQ8IS0tIOekvOeJqeaVsOmHjyAtLT5cblx0XHRcdFx0XHRcdDx0ZXh0IGNsYXNzPVwidGV4dC13YXJuaW5nIGZvbnQtbGcgbXgtMVwiPlggMTI8L3RleHQ+XG5cdFx0XHRcdFx0PC92aWV3PlxuXHRcdFx0XHQ8L3Njcm9sbC12aWV3PlxuXHRcdFx0PC92aWV3PlxuXHRcdFx0PCEtLSDlvLnluZUgLS0+XG5cdFx0XHQ8dmlldyBzdHlsZT1cInBvc2l0aW9uOiBmaXhlZDtib3R0b206MTIwcnB4O2xlZnQ6MDt3aWR0aDo1MjBycHg7aGVpZ2h0OjMwMHJweDtcIiBjbGFzcz1cImJnLXdhcm5pbmdcIj48L3ZpZXc+XG5cdFx0PC92aWV3PlxuXG5cdFx0PCEtLSDkuLTml7blhbPpl60gLS0+XG5cdFx0PCEtLSDlupXpg6jvvIznlKjmiLfmk43kvZzljLogLS0+XG5cdFx0PCEtLSA8dmlldyBzdHlsZT1cInBvc2l0aW9uOmZpeGVkOyBsZWZ0OjA7IGJvdHRvbTowOyByaWdodDowOyBoZWlnaHQ6IDEyMHJweDtcIiBjbGFzcz1cImJnLWRhbmdlclwiPjwvdmlldz4gLS0+XG5cdDwvdmlldz5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQ+XG5cdGV4cG9ydCBkZWZhdWx0IHtcblx0XHRkYXRhKCkge1xuXHRcdFx0cmV0dXJuIHtcblx0XHRcdFx0c3RhdHVzQmFySGVpZ2h0OjBcblx0XHRcdH1cblx0XHR9LFxuXHRcdG9uTG9hZCgpIHtcblx0XHRcdGxldCByZXMgPSB1bmkuZ2V0U3lzdGVtSW5mb1N5bmMoKVxuXHRcdFx0Y29uc29sZS5sb2coJ3JlcycsIHJlcylcblx0XHRcdHRoaXMuc3RhdHVzQmFySGVpZ2h0ID0gcmVzLnN0YXR1c0JhckhlaWdodFxuXHRcdH0sXG5cdFx0bWV0aG9kczoge1xuXHRcdFx0XG5cdFx0fVxuXHR9XG48L3NjcmlwdD5cblxuPHN0eWxlPlxuXHQucGFnZSB7XG5cdFx0LyogYm9yZGVyOiAxMHB4IHNvbGlkOyAqL1xuXHRcdGZsZXg6IDE7XG5cdFx0LyogYmFja2dyb3VuZC1jb2xvcjogcmVkOyAqL1xuXHR9XG48L3N0eWxlPlxuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///8\n");
+eval("/* WEBPACK VAR INJECTION */(function(__f__) {Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar _fGift = _interopRequireDefault(__webpack_require__(/*! @/components/live/f-gift.vue */ 13));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default = { components: { fGift: _fGift.default }, data: function data() {return { statusBarHeight: 0 };}, onLoad: function onLoad() {var res = uni.getSystemInfoSync();__f__(\"log\", 'res', res, \" at pages/live/live.nvue:76\");this.statusBarHeight = res.statusBarHeight;}, methods: {} };exports.default = _default;\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/lib/format-log.js */ 9)[\"default\"]))//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvbGl2ZS9saXZlLm52dWUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBK0RBLGlHOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztlQUNBLEVBQ0EsY0FDQSxxQkFEQSxFQURBLEVBSUEsSUFKQSxrQkFJQSxDQUNBLFNBQ0Esa0JBREEsR0FHQSxDQVJBLEVBU0EsTUFUQSxvQkFTQSxDQUNBLGtDQUNBLHdEQUNBLDJDQUNBLENBYkEsRUFjQSxXQWRBLEUiLCJmaWxlIjoiOC5qcyIsInNvdXJjZXNDb250ZW50IjpbIjx0ZW1wbGF0ZT5cblx0PHZpZXcgY2xhc3M9XCJwYWdlXCI+XG5cdFx0PCEtLSDkuLTml7blkK/nlKggLS0+XG5cdFx0PHZpZGVvIGNsYXNzPVwiZmxleC0xXCIgc3JjPVwiaHR0cDovL2l2aS5idXB0LmVkdS5jbi9obHMvY2N0djFoZC5tM3U4XCIgYXV0b3BsYXkgY29udHJvbHM+PC92aWRlbz5cblx0XHQ8IS0tIOS4tOaXtuWFs+mXrSAtLT5cblx0XHQ8IS0tIDx2aWRlbyBjbGFzcz1cImZsZXgtMVwiIHNyYz1cImh0dHA6Ly9pdmkuYnVwdC5lZHUuY24vaGxzL2NjdHYxaGQubTN1OFwiIGF1dG9wbGF5IDpjb250cm9scz1cInRydWVcIj48L3ZpZGVvPiAtLT5cblx0XHQ8IS0tIOWktOmDqFx0dG9w5YC85piv5omL5py66K6+5aSH54q25oCB5qCP55qE6auY5bqmIC0tPlxuXHRcdDx2aWV3IHN0eWxlPVwicG9zaXRpb246IGZpeGVkO2xlZnQ6MDtyaWdodDowO1wiIDpzdHlsZT1cIid0b3A6JyArIHN0YXR1c0JhckhlaWdodCArICdweCdcIj5cblx0XHRcdDwhLS0g5Liq5Lq65L+h5oGv5ZKM6KeC55yL5oOF5Ya1IC0tPlxuXHRcdFx0PHZpZXcgc3R5bGU9XCJoZWlnaHQ6ODBycHg7XCIgY2xhc3M9XCJweC0yIGZsZXgganVzdGlmeS1iZXR3ZWVuIGFsaWduLWNlbnRlclwiPlxuXHRcdFx0XHQ8IS0tIOW3pui+uSAtLT5cblx0XHRcdFx0PHZpZXcgc3R5bGU9XCJ3aWR0aDozMjVycHg7YmFja2dyb3VuZC1jb2xvcjpyZ2JhKDAsMCwwLC40KTtcIiBjbGFzcz1cImZsZXgganVzdGlmeS1iZXR3ZWVuIGFsaWduLWNlbnRlciByb3VuZGVkLWNpcmNsZVwiPlxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwicFwiPlxuXHRcdFx0XHRcdFx0PGltYWdlIHNyYz1cIi9zdGF0aWMvdGFiYmFyL21pbi5wbmdcIiBtb2RlPVwiXCIgc3R5bGU9XCJ3aWR0aDo3MHJweDtoZWlnaHQ6NzBycHg7XCIgY2xhc3M9XCJyb3VuZGVkLWNpcmNsZVwiPjwvaW1hZ2U+XG5cdFx0XHRcdFx0PC92aWV3PlxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwiZmxleC0xIGZsZXgtY29sdW1uIGp1c3RpZnktY2VudGVyIGFsaWduLXN0YXJ0XCI+XG5cdFx0XHRcdFx0XHQ8dGV4dCBjbGFzcz1cInRleHQtd2hpdGUgZm9udFwiPuaYteensDwvdGV4dD5cblx0XHRcdFx0XHRcdDx0ZXh0IGNsYXNzPVwidGV4dC13aGl0ZSBmb250LXNtXCI+MTAwMDwvdGV4dD5cblx0XHRcdFx0XHQ8L3ZpZXc+XG5cdFx0XHRcdFx0PHZpZXcgY2xhc3M9XCJwXCI+XG5cdFx0XHRcdFx0XHQ8dmlldyBjbGFzcz1cInJvdW5kZWQtY2lyY2xlIGZsZXgganVzdGlmeS1jZW50ZXIgYWxpZ24tY2VudGVyIGJnLWRhbmdlclwiIHN0eWxlPVwid2lkdGg6NzBycHg7aGVpZ2h0OjcwcnB4O1wiPlxuXHRcdFx0XHRcdFx0XHQ8dGV4dCBjbGFzcz1cInRleHQtd2hpdGVcIj4rPC90ZXh0PlxuXHRcdFx0XHRcdFx0PC92aWV3PlxuXHRcdFx0XHRcdDwvdmlldz5cblx0XHRcdFx0PC92aWV3PlxuXHRcdFx0XHQ8IS0tIOWPs+i+uSAtLT5cblx0XHRcdFx0PHZpZXcgc3R5bGU9XCJ3aWR0aDozMjVycHg7YmFja2dyb3VuZC1jb2xvcjpyZ2JhKDAsMCwwLC40KTtcIiBjbGFzcz1cImZsZXgganVzdGlmeS1iZXR3ZWVuIGFsaWduLWNlbnRlciByb3VuZGVkLWNpcmNsZVwiPlxuXHRcdFx0XHRcdDxzY3JvbGwtdmlldyBzY3JvbGwteD1cInRydWVcIiBjbGFzcz1cImZsZXggZmxleC0xXCI+XG5cdFx0XHRcdFx0XHQ8dmlldyBjbGFzcz1cInBcIiB2LWZvcj1cImkgaW4gMjBcIiA6a2V5PVwiaVwiPlxuXHRcdFx0XHRcdFx0XHQ8aW1hZ2Ugc3JjPVwiL3N0YXRpYy90YWJiYXIvbWluLnBuZ1wiIG1vZGU9XCJcIiBzdHlsZT1cIndpZHRoOjcwcnB4O2hlaWdodDo3MHJweDtcIiBjbGFzcz1cInJvdW5kZWQtY2lyY2xlXCI+PC9pbWFnZT5cblx0XHRcdFx0XHRcdDwvdmlldz5cblx0XHRcdFx0XHQ8L3Njcm9sbC12aWV3PlxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwicFwiPlxuXHRcdFx0XHRcdFx0PHZpZXcgY2xhc3M9XCJyb3VuZGVkLWNpcmNsZSBmbGV4IGp1c3RpZnktY2VudGVyIGFsaWduLWNlbnRlciBiZy1kYW5nZXJcIiBzdHlsZT1cIndpZHRoOjcwcnB4O2hlaWdodDo3MHJweDtcIj5cblx0XHRcdFx0XHRcdFx0PHRleHQgY2xhc3M9XCJ0ZXh0LXdoaXRlIGZvbnQtc21cIj4xMDAwPC90ZXh0PlxuXHRcdFx0XHRcdFx0PC92aWV3PlxuXHRcdFx0XHRcdDwvdmlldz5cblx0XHRcdFx0PC92aWV3PlxuXHRcdFx0PC92aWV3PlxuXHRcdFx0PCEtLSDph5HluIEgLS0+XG5cdFx0XHQ8dmlldyBzdHlsZT1cImhlaWdodDo4MHJweDtcIiBjbGFzcz1cInB4LTIgbXktMlwiPlxuXHRcdFx0XHQ8dmlldyBzdHlsZT1cIndpZHRoOjMyNXJweDtcIiBjbGFzcz1cImZsZXgganVzdGlmeS1iZXR3ZWVuIGFsaWduLWNlbnRlciByb3VuZGVkLWNpcmNsZVwiPlxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwicFwiPlxuXHRcdFx0XHRcdFx0PHRleHQgY2xhc3M9XCJmb250LWxnIHRleHQtd2FybmluZ1wiPumHkeW4gTwvdGV4dD5cblx0XHRcdFx0XHQ8L3ZpZXc+XG5cdFx0XHRcdFx0PHZpZXcgY2xhc3M9XCJmbGV4LTEgZmxleC1jb2x1bW4ganVzdGlmeS1jZW50ZXIgYWxpZ24tc3RhcnRcIj5cblx0XHRcdFx0XHRcdDx0ZXh0IGNsYXNzPVwidGV4dC13aGl0ZSBmb250XCI+MTAwPC90ZXh0PlxuXHRcdFx0XHRcdDwvdmlldz5cblx0XHRcdFx0PC92aWV3PiBcblx0XHRcdDwvdmlldz5cblx0XHRcdDwhLS0g5pS25Yiw56S854mpIC0tPlxuXHRcdFx0PGYtZ2lmdD48L2YtZ2lmdD5cblx0XHRcdDwhLS0g5by55bmVIC0tPlxuXHRcdFx0PHZpZXcgc3R5bGU9XCJwb3NpdGlvbjogZml4ZWQ7Ym90dG9tOjEyMHJweDtsZWZ0OjA7d2lkdGg6NTIwcnB4O2hlaWdodDozMDBycHg7XCIgY2xhc3M9XCJiZy13YXJuaW5nXCI+PC92aWV3PlxuXHRcdDwvdmlldz5cblxuXHRcdDwhLS0g5Li05pe25YWz6ZetIC0tPlxuXHRcdDwhLS0g5bqV6YOo77yM55So5oi35pON5L2c5Yy6IC0tPlxuXHRcdDwhLS0gPHZpZXcgc3R5bGU9XCJwb3NpdGlvbjpmaXhlZDsgbGVmdDowOyBib3R0b206MDsgcmlnaHQ6MDsgaGVpZ2h0OiAxMjBycHg7XCIgY2xhc3M9XCJiZy1kYW5nZXJcIj48L3ZpZXc+IC0tPlxuXHQ8L3ZpZXc+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0PlxuXHRpbXBvcnQgZkdpZnQgZnJvbSAnQC9jb21wb25lbnRzL2xpdmUvZi1naWZ0LnZ1ZSc7XG5cdGV4cG9ydCBkZWZhdWx0IHtcblx0XHRjb21wb25lbnRzOiB7XG5cdFx0XHRmR2lmdCxcblx0XHR9LFxuXHRcdGRhdGEoKSB7XG5cdFx0XHRyZXR1cm4ge1xuXHRcdFx0XHRzdGF0dXNCYXJIZWlnaHQ6MFxuXHRcdFx0fVxuXHRcdH0sXG5cdFx0b25Mb2FkKCkge1xuXHRcdFx0bGV0IHJlcyA9IHVuaS5nZXRTeXN0ZW1JbmZvU3luYygpXG5cdFx0XHRjb25zb2xlLmxvZygncmVzJywgcmVzKVxuXHRcdFx0dGhpcy5zdGF0dXNCYXJIZWlnaHQgPSByZXMuc3RhdHVzQmFySGVpZ2h0XG5cdFx0fSxcblx0XHRtZXRob2RzOiB7XG5cdFx0XHRcblx0XHR9XG5cdH1cbjwvc2NyaXB0PlxuXG48c3R5bGU+XG5cdC5wYWdlIHtcblx0XHQvKiBib3JkZXI6IDEwcHggc29saWQ7ICovXG5cdFx0ZmxleDogMTtcblx0XHQvKiBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7ICovXG5cdH1cbjwvc3R5bGU+XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///8\n");
 
 /***/ }),
 /* 9 */
@@ -1729,6 +1621,178 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+/* 13 */
+/*!************************************************************************************!*\
+  !*** /Users/chenli/artProgramming/uni-app/liveshow-app/components/live/f-gift.vue ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _f_gift_vue_vue_type_template_id_8ebb94a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./f-gift.vue?vue&type=template&id=8ebb94a4& */ 14);\n/* harmony import */ var _f_gift_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./f-gift.vue?vue&type=script&lang=js& */ 16);\n/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _f_gift_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _f_gift_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));\n/* harmony import */ var _Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 12);\n\nvar renderjs\n\n\nfunction injectStyles (context) {\n  \n  if(!this.options.style){\n          this.options.style = {}\n      }\n      if(Vue.prototype.__merge_style && Vue.prototype.__$appStyle__){\n        Vue.prototype.__merge_style(Vue.prototype.__$appStyle__, this.options.style)\n      }\n      \n}\n\n/* normalize component */\n\nvar component = Object(_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\n  _f_gift_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  _f_gift_vue_vue_type_template_id_8ebb94a4___WEBPACK_IMPORTED_MODULE_0__[\"render\"],\n  _f_gift_vue_vue_type_template_id_8ebb94a4___WEBPACK_IMPORTED_MODULE_0__[\"staticRenderFns\"],\n  false,\n  null,\n  null,\n  \"e1ab038c\",\n  false,\n  _f_gift_vue_vue_type_template_id_8ebb94a4___WEBPACK_IMPORTED_MODULE_0__[\"components\"],\n  renderjs\n)\n\ninjectStyles.call(component)\ncomponent.options.__file = \"Users/chenli/artProgramming/uni-app/liveshow-app/components/live/f-gift.vue\"\n/* harmony default export */ __webpack_exports__[\"default\"] = (component.exports);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbbnVsbF0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBbUg7QUFDbkg7QUFDMEQ7QUFDTDtBQUNyRDs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7O0FBRUE7QUFDZ047QUFDaE4sZ0JBQWdCLGlOQUFVO0FBQzFCLEVBQUUsNEVBQU07QUFDUixFQUFFLGlGQUFNO0FBQ1IsRUFBRSwwRkFBZTtBQUNqQjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsRUFBRSxxRkFBVTtBQUNaO0FBQ0E7O0FBRUE7QUFDQTtBQUNlLGdGIiwiZmlsZSI6IjEzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgcmVuZGVyLCBzdGF0aWNSZW5kZXJGbnMsIHJlY3ljbGFibGVSZW5kZXIsIGNvbXBvbmVudHMgfSBmcm9tIFwiLi9mLWdpZnQudnVlP3Z1ZSZ0eXBlPXRlbXBsYXRlJmlkPThlYmI5NGE0JlwiXG52YXIgcmVuZGVyanNcbmltcG9ydCBzY3JpcHQgZnJvbSBcIi4vZi1naWZ0LnZ1ZT92dWUmdHlwZT1zY3JpcHQmbGFuZz1qcyZcIlxuZXhwb3J0ICogZnJvbSBcIi4vZi1naWZ0LnZ1ZT92dWUmdHlwZT1zY3JpcHQmbGFuZz1qcyZcIlxuZnVuY3Rpb24gaW5qZWN0U3R5bGVzIChjb250ZXh0KSB7XG4gIFxuICBpZighdGhpcy5vcHRpb25zLnN0eWxlKXtcbiAgICAgICAgICB0aGlzLm9wdGlvbnMuc3R5bGUgPSB7fVxuICAgICAgfVxuICAgICAgaWYoVnVlLnByb3RvdHlwZS5fX21lcmdlX3N0eWxlICYmIFZ1ZS5wcm90b3R5cGUuX18kYXBwU3R5bGVfXyl7XG4gICAgICAgIFZ1ZS5wcm90b3R5cGUuX19tZXJnZV9zdHlsZShWdWUucHJvdG90eXBlLl9fJGFwcFN0eWxlX18sIHRoaXMub3B0aW9ucy5zdHlsZSlcbiAgICAgIH1cbiAgICAgIFxufVxuXG4vKiBub3JtYWxpemUgY29tcG9uZW50ICovXG5pbXBvcnQgbm9ybWFsaXplciBmcm9tIFwiIS4uLy4uLy4uLy4uLy4uLy4uLy4uL0FwcGxpY2F0aW9ucy9IQnVpbGRlclguYXBwL0NvbnRlbnRzL0hCdWlsZGVyWC9wbHVnaW5zL3VuaWFwcC1jbGkvbm9kZV9tb2R1bGVzL0BkY2xvdWRpby92dWUtY2xpLXBsdWdpbi11bmkvcGFja2FnZXMvdnVlLWxvYWRlci9saWIvcnVudGltZS9jb21wb25lbnROb3JtYWxpemVyLmpzXCJcbnZhciBjb21wb25lbnQgPSBub3JtYWxpemVyKFxuICBzY3JpcHQsXG4gIHJlbmRlcixcbiAgc3RhdGljUmVuZGVyRm5zLFxuICBmYWxzZSxcbiAgbnVsbCxcbiAgbnVsbCxcbiAgXCJlMWFiMDM4Y1wiLFxuICBmYWxzZSxcbiAgY29tcG9uZW50cyxcbiAgcmVuZGVyanNcbilcblxuaW5qZWN0U3R5bGVzLmNhbGwoY29tcG9uZW50KVxuY29tcG9uZW50Lm9wdGlvbnMuX19maWxlID0gXCJVc2Vycy9jaGVubGkvYXJ0UHJvZ3JhbW1pbmcvdW5pLWFwcC9saXZlc2hvdy1hcHAvY29tcG9uZW50cy9saXZlL2YtZ2lmdC52dWVcIlxuZXhwb3J0IGRlZmF1bHQgY29tcG9uZW50LmV4cG9ydHMiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///13\n");
+
+/***/ }),
+/* 14 */
+/*!*******************************************************************************************************************!*\
+  !*** /Users/chenli/artProgramming/uni-app/liveshow-app/components/live/f-gift.vue?vue&type=template&id=8ebb94a4& ***!
+  \*******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns, recyclableRender, components */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_hbuilderx_packages_webpack_uni_nvue_loader_lib_template_recycle_js_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_7_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_template_id_8ebb94a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-hbuilderx/packages/webpack-uni-nvue-loader/lib/template.recycle.js!../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--7-0!../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./f-gift.vue?vue&type=template&id=8ebb94a4& */ 15);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_hbuilderx_packages_webpack_uni_nvue_loader_lib_template_recycle_js_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_7_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_template_id_8ebb94a4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_hbuilderx_packages_webpack_uni_nvue_loader_lib_template_recycle_js_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_7_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_template_id_8ebb94a4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return _Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_hbuilderx_packages_webpack_uni_nvue_loader_lib_template_recycle_js_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_7_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_template_id_8ebb94a4___WEBPACK_IMPORTED_MODULE_0__["recyclableRender"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "components", function() { return _Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_hbuilderx_packages_webpack_uni_nvue_loader_lib_template_recycle_js_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_7_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_template_id_8ebb94a4___WEBPACK_IMPORTED_MODULE_0__["components"]; });
+
+
+
+/***/ }),
+/* 15 */
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-hbuilderx/packages/webpack-uni-nvue-loader/lib/template.recycle.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--7-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!/Users/chenli/artProgramming/uni-app/liveshow-app/components/live/f-gift.vue?vue&type=template&id=8ebb94a4& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns, recyclableRender, components */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
+var components
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "list",
+    {
+      staticStyle: {
+        width: "520rpx",
+        height: "500rpx",
+        backgroundColor: "rgba(255,255,255,.2)"
+      },
+      attrs: { showScrollbar: false }
+    },
+    _vm._l(10, function(i) {
+      return _c(
+        "cell",
+        {
+          key: i,
+          staticClass: ["flex", "px-3", "pt-3", "align-center"],
+          appendAsTree: true,
+          attrs: {
+            insertAnimation: "default",
+            deleteAnimation: "default",
+            append: "tree"
+          }
+        },
+        [
+          _c(
+            "view",
+            {
+              staticClass: [
+                "flex",
+                "justify-between",
+                "align-center",
+                "rounded-circle"
+              ],
+              staticStyle: {
+                width: "325rpx",
+                backgroundImage: "linear-gradient(to right, #BCABB1, #65AAF0)"
+              }
+            },
+            [
+              _c(
+                "view",
+                { staticClass: ["p"] },
+                [
+                  _c("u-image", {
+                    staticClass: ["rounded-circle"],
+                    staticStyle: { width: "70rpx", height: "70rpx" },
+                    attrs: { src: "/static/tabbar/min.png", mode: "" }
+                  })
+                ],
+                1
+              ),
+              _vm._m(0, true),
+              _c(
+                "view",
+                { staticClass: ["p"] },
+                [
+                  _c("u-image", {
+                    staticClass: ["rounded-circle"],
+                    staticStyle: { width: "70rpx", height: "70rpx" },
+                    attrs: { src: "/static/gift/1.png", mode: "" }
+                  })
+                ],
+                1
+              )
+            ]
+          ),
+          _c("u-text", { staticClass: ["text-warning", "font-lg", "mx-1"] }, [
+            _vm._v("X 12")
+          ])
+        ]
+      )
+    }),
+    0
+  )
+}
+var recyclableRender = false
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "view",
+      {
+        staticClass: ["flex-1", "flex-column", "justify-center", "align-start"]
+      },
+      [
+        _c("u-text", { staticClass: ["text-white", "font"] }, [_vm._v("昵称")]),
+        _c("u-text", { staticClass: ["text-white", "font-sm"] }, [
+          _vm._v("送蛋糕")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+/* 16 */
+/*!*************************************************************************************************************!*\
+  !*** /Users/chenli/artProgramming/uni-app/liveshow-app/components/live/f-gift.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_ref_4_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_4_1_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/babel-loader/lib??ref--4-0!../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--4-1!../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./f-gift.vue?vue&type=script&lang=js& */ 17);\n/* harmony import */ var _Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_ref_4_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_4_1_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_ref_4_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_4_1_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);\n/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_ref_4_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_4_1_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_ref_4_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_4_1_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));\n /* harmony default export */ __webpack_exports__[\"default\"] = (_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_ref_4_0_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_4_1_Applications_HBuilderX_app_Contents_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_f_gift_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); //# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbbnVsbF0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQTRpQixDQUFnQixzakJBQUcsRUFBQyIsImZpbGUiOiIxNi5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBtb2QgZnJvbSBcIi0hLi4vLi4vLi4vLi4vLi4vLi4vLi4vQXBwbGljYXRpb25zL0hCdWlsZGVyWC5hcHAvQ29udGVudHMvSEJ1aWxkZXJYL3BsdWdpbnMvdW5pYXBwLWNsaS9ub2RlX21vZHVsZXMvYmFiZWwtbG9hZGVyL2xpYi9pbmRleC5qcz8/cmVmLS00LTAhLi4vLi4vLi4vLi4vLi4vLi4vLi4vQXBwbGljYXRpb25zL0hCdWlsZGVyWC5hcHAvQ29udGVudHMvSEJ1aWxkZXJYL3BsdWdpbnMvdW5pYXBwLWNsaS9ub2RlX21vZHVsZXMvQGRjbG91ZGlvL3Z1ZS1jbGktcGx1Z2luLXVuaS9wYWNrYWdlcy93ZWJwYWNrLXByZXByb2Nlc3MtbG9hZGVyL2luZGV4LmpzPz9yZWYtLTQtMSEuLi8uLi8uLi8uLi8uLi8uLi8uLi9BcHBsaWNhdGlvbnMvSEJ1aWxkZXJYLmFwcC9Db250ZW50cy9IQnVpbGRlclgvcGx1Z2lucy91bmlhcHAtY2xpL25vZGVfbW9kdWxlcy9AZGNsb3VkaW8vdnVlLWNsaS1wbHVnaW4tdW5pL3BhY2thZ2VzL3Z1ZS1sb2FkZXIvbGliL2luZGV4LmpzPz92dWUtbG9hZGVyLW9wdGlvbnMhLi9mLWdpZnQudnVlP3Z1ZSZ0eXBlPXNjcmlwdCZsYW5nPWpzJlwiOyBleHBvcnQgZGVmYXVsdCBtb2Q7IGV4cG9ydCAqIGZyb20gXCItIS4uLy4uLy4uLy4uLy4uLy4uLy4uL0FwcGxpY2F0aW9ucy9IQnVpbGRlclguYXBwL0NvbnRlbnRzL0hCdWlsZGVyWC9wbHVnaW5zL3VuaWFwcC1jbGkvbm9kZV9tb2R1bGVzL2JhYmVsLWxvYWRlci9saWIvaW5kZXguanM/P3JlZi0tNC0wIS4uLy4uLy4uLy4uLy4uLy4uLy4uL0FwcGxpY2F0aW9ucy9IQnVpbGRlclguYXBwL0NvbnRlbnRzL0hCdWlsZGVyWC9wbHVnaW5zL3VuaWFwcC1jbGkvbm9kZV9tb2R1bGVzL0BkY2xvdWRpby92dWUtY2xpLXBsdWdpbi11bmkvcGFja2FnZXMvd2VicGFjay1wcmVwcm9jZXNzLWxvYWRlci9pbmRleC5qcz8/cmVmLS00LTEhLi4vLi4vLi4vLi4vLi4vLi4vLi4vQXBwbGljYXRpb25zL0hCdWlsZGVyWC5hcHAvQ29udGVudHMvSEJ1aWxkZXJYL3BsdWdpbnMvdW5pYXBwLWNsaS9ub2RlX21vZHVsZXMvQGRjbG91ZGlvL3Z1ZS1jbGktcGx1Z2luLXVuaS9wYWNrYWdlcy92dWUtbG9hZGVyL2xpYi9pbmRleC5qcz8/dnVlLWxvYWRlci1vcHRpb25zIS4vZi1naWZ0LnZ1ZT92dWUmdHlwZT1zY3JpcHQmbGFuZz1qcyZcIiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///16\n");
+
+/***/ }),
+/* 17 */
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--4-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!/Users/chenli/artProgramming/uni-app/liveshow-app/components/live/f-gift.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  data: function data() {\n    return {\n      gifts: [] };\n\n  },\n  onLoad: function onLoad() {\n    setInterval(function () {\n\n    }, 3000);\n  } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vY29tcG9uZW50cy9saXZlL2YtZ2lmdC52dWUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBd0JBO0FBQ0EsTUFEQSxrQkFDQTtBQUNBO0FBQ0EsZUFEQTs7QUFHQSxHQUxBO0FBTUEsUUFOQSxvQkFNQTtBQUNBOztBQUVBLEtBRkEsRUFFQSxJQUZBO0FBR0EsR0FWQSxFIiwiZmlsZSI6IjE3LmpzIiwic291cmNlc0NvbnRlbnQiOlsiPHRlbXBsYXRlPlxuXHQ8IS0tIOaUtuWIsOekvOeJqSAtLT5cblx0PGxpc3QgOnNob3ctc2Nyb2xsYmFyPVwiZmFsc2VcIiBzdHlsZT1cIndpZHRoOjUyMHJweDtoZWlnaHQ6NTAwcnB4O2JhY2tncm91bmQtY29sb3I6cmdiYSgyNTUsMjU1LDI1NSwuMik7XCI+XG5cdFx0PGNlbGwgY2xhc3M9XCJmbGV4IHB4LTMgcHQtMyBhbGlnbi1jZW50ZXJcIiB2LWZvcj1cImkgaW4gMTBcIiA6a2V5PVwiaVwiIGluc2VydC1hbmltYXRpb249XCJkZWZhdWx0XCIgZGVsZXRlLWFuaW1hdGlvbj1cImRlZmF1bHRcIj5cblx0XHRcdDwhLS0g5pi+56S66LCB6YCB55qE56S854mpIC0tPlxuXHRcdFx0PHZpZXcgc3R5bGU9XCJ3aWR0aDozMjVycHg7YmFja2dyb3VuZC1pbWFnZTpsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICNCQ0FCQjEsICM2NUFBRjApO1wiIGNsYXNzPVwiZmxleCBqdXN0aWZ5LWJldHdlZW4gYWxpZ24tY2VudGVyIHJvdW5kZWQtY2lyY2xlXCI+XG5cdFx0XHRcdDx2aWV3IGNsYXNzPVwicFwiPlxuXHRcdFx0XHRcdDxpbWFnZSBzcmM9XCIvc3RhdGljL3RhYmJhci9taW4ucG5nXCIgbW9kZT1cIlwiIHN0eWxlPVwid2lkdGg6NzBycHg7aGVpZ2h0OjcwcnB4O1wiIGNsYXNzPVwicm91bmRlZC1jaXJjbGVcIj48L2ltYWdlPlxuXHRcdFx0XHQ8L3ZpZXc+XG5cdFx0XHRcdDx2aWV3IGNsYXNzPVwiZmxleC0xIGZsZXgtY29sdW1uIGp1c3RpZnktY2VudGVyIGFsaWduLXN0YXJ0XCI+XG5cdFx0XHRcdFx0PHRleHQgY2xhc3M9XCJ0ZXh0LXdoaXRlIGZvbnRcIj7mmLXnp7A8L3RleHQ+XG5cdFx0XHRcdFx0PHRleHQgY2xhc3M9XCJ0ZXh0LXdoaXRlIGZvbnQtc21cIj7pgIHom4vns5U8L3RleHQ+XG5cdFx0XHRcdDwvdmlldz5cblx0XHRcdFx0PHZpZXcgY2xhc3M9XCJwXCI+XG5cdFx0XHRcdFx0PGltYWdlIHNyYz1cIi9zdGF0aWMvZ2lmdC8xLnBuZ1wiIG1vZGU9XCJcIiBzdHlsZT1cIndpZHRoOjcwcnB4O2hlaWdodDo3MHJweDtcIiBjbGFzcz1cInJvdW5kZWQtY2lyY2xlXCI+PC9pbWFnZT5cblx0XHRcdFx0PC92aWV3PlxuXHRcdFx0PC92aWV3PlxuXHRcdFx0PCEtLSDnpLznianmlbDph48gLS0+XG5cdFx0XHQ8dGV4dCBjbGFzcz1cInRleHQtd2FybmluZyBmb250LWxnIG14LTFcIj5YIDEyPC90ZXh0PlxuXHRcdDwvY2VsbD5cblx0PC9saXN0PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdD5cblx0ZXhwb3J0IGRlZmF1bHQge1xuXHRcdGRhdGEgKCkge1xuXHRcdFx0cmV0dXJuIHtcblx0XHRcdFx0Z2lmdHM6IFtdXG5cdFx0XHR9XG5cdFx0fSxcblx0XHRvbkxvYWQgKCkge1xuXHRcdFx0c2V0SW50ZXJ2YWwoKCkgPT4ge1xuXHRcdFx0XHRcblx0XHRcdH0sMzAwMClcblx0XHR9XG5cdH1cbjwvc2NyaXB0PlxuXG48c3R5bGU+XG48L3N0eWxlPlxuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///17\n");
 
 /***/ })
 /******/ ]);

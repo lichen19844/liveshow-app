@@ -1,0 +1,107 @@
+<template>
+	<view class="page">
+		<!-- 临时启用 -->
+		<video class="flex-1" src="http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8" autoplay controls></video>
+		<!-- 临时关闭 -->
+		<!-- <video class="flex-1" src="http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8" autoplay :controls="true"></video> -->
+		<!-- 头部	top值是手机设备状态栏的高度 -->
+		<view style="position: fixed;left:0;right:0;" :style="'top:' + statusBarHeight + 'px'">
+			<!-- 个人信息和观看情况 -->
+			<view style="height:80rpx;" class="px-2 flex justify-between align-center">
+				<!-- 左边 -->
+				<view style="width:325rpx;background-color:rgba(0,0,0,.4);" class="flex justify-between align-center rounded-circle">
+					<view class="p">
+						<image src="/static/tabbar/min.png" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
+					</view>
+					<view class="flex-1 flex-column justify-center align-start">
+						<text class="text-white font">昵称</text>
+						<text class="text-white font-sm">1000</text>
+					</view>
+					<view class="p">
+						<view class="rounded-circle flex justify-center align-center bg-danger" style="width:70rpx;height:70rpx;">
+							<text class="text-white">+</text>
+						</view>
+					</view>
+				</view>
+				<!-- 右边 -->
+				<view style="width:325rpx;background-color:rgba(0,0,0,.4);" class="flex justify-between align-center rounded-circle">
+					<scroll-view scroll-x="true" class="flex flex-1">
+						<view class="p" v-for="i in 20" :key="i">
+							<image src="/static/tabbar/min.png" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
+						</view>
+					</scroll-view>
+					<view class="p">
+						<view class="rounded-circle flex justify-center align-center bg-danger" style="width:70rpx;height:70rpx;">
+							<text class="text-white font-sm">1000</text>
+						</view>
+					</view>
+				</view>
+			</view>
+			<!-- 金币 -->
+			<view style="height:80rpx;" class="px-2 my-2">
+				<view style="width:325rpx;" class="flex justify-between align-center rounded-circle">
+					<view class="p">
+						<text class="font-lg text-warning">金币</text>
+					</view>
+					<view class="flex-1 flex-column justify-center align-start">
+						<text class="text-white font">100</text>
+					</view>
+				</view> 
+			</view>
+			<!-- 收到礼物 -->
+			<view style="height:500rpx;">
+				<scroll-view scroll-y="true" style="width:520rpx;height:500rpx;background-color:rgba(255,255,255,.2);">
+					<view class="flex px-3 align-center">
+						<!-- 显示谁送的礼物 -->
+						<view style="width:325rpx;background-image:linear-gradient(to right, #BCABB1, #65AAF0);" class="flex justify-between align-center rounded-circle">
+							<view class="p">
+								<image src="/static/tabbar/min.png" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
+							</view>
+							<view class="flex-1 flex-column justify-center align-start">
+								<text class="text-white font">昵称</text>
+								<text class="text-white font-sm">送蛋糕</text>
+							</view>
+							<view class="p">
+								<image src="/static/gift/1.png" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
+							</view>
+						</view>
+						<!-- 礼物数量 -->
+						<text class="text-warning font-lg mx-1">X 12</text>
+					</view>
+				</scroll-view>
+			</view>
+			<!-- 弹幕 -->
+			<view style="position: fixed;bottom:120rpx;left:0;width:520rpx;height:300rpx;" class="bg-warning"></view>
+		</view>
+
+		<!-- 临时关闭 -->
+		<!-- 底部，用户操作区 -->
+		<!-- <view style="position:fixed; left:0; bottom:0; right:0; height: 120rpx;" class="bg-danger"></view> -->
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				statusBarHeight:0
+			}
+		},
+		onLoad() {
+			let res = uni.getSystemInfoSync()
+			console.log('res', res)
+			this.statusBarHeight = res.statusBarHeight
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style>
+	.page {
+		/* border: 10px solid; */
+		flex: 1;
+		/* background-color: red; */
+	}
+</style>

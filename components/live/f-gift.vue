@@ -1,37 +1,68 @@
 <template>
 	<!-- 收到礼物 -->
 	<list :show-scrollbar="false" style="width:520rpx;height:500rpx;background-color:rgba(255,255,255,.2);">
-		<cell class="flex px-3 pt-3 align-center" v-for="i in 10" :key="i" insert-animation="default" delete-animation="default">
+		<cell class="flex px-3 pt-3 align-center" v-for="(item, index) in gifts" :key="index" insert-animation="default" delete-animation="default" :ref="'item'+index">
 			<!-- 显示谁送的礼物 -->
 			<view style="width:325rpx;background-image:linear-gradient(to right, #BCABB1, #65AAF0);" class="flex justify-between align-center rounded-circle">
 				<view class="p">
-					<image src="/static/tabbar/min.png" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
+					<image :src="item.avatar || defaultAvatar" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
 				</view>
 				<view class="flex-1 flex-column justify-center align-start">
-					<text class="text-white font">昵称</text>
-					<text class="text-white font-sm">送蛋糕</text>
+					<text class="text-white font">{{item.username}}</text>
+					<text class="text-white font-sm">送{{item.gift_name}}</text>
 				</view>
 				<view class="p">
 					<image src="/static/gift/1.png" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
 				</view>
 			</view>
 			<!-- 礼物数量 -->
-			<text class="text-warning font-lg mx-1">X 12</text>
+			<text class="text-warning font-lg mx-1">X {{item.num}}</text>
 		</cell>
 	</list>
 </template>
 
 <script>
+	const dom = weex.requireModule('dom')
 	export default {
 		data () {
 			return {
-				gifts: []
+				gifts: [],
+				defaultAvatar: '/static/tabbar/min.png'
 			}
 		},
-		onLoad () {
-			setInterval(() => {
-				
-			},3000)
+		// created () {
+		// 	// 模拟送礼物
+		// 	setInterval(() => {
+		// 		this.send()
+		// 	},3000)
+		// },
+		methods: {
+			// 模拟送礼物
+			send (gift) {
+				this.gifts.push(gift)
+				this.toBottom()
+				this.autoHide()
+			},
+			// 置于底部
+			toBottom () {
+				this.$nextTick(() => {
+					// 拿到最后一个索引
+					let index = this.gifts.length - 1
+					let ref = 'item' + index
+					if (this.$refs[ref]) {
+						// 滚动到最后一个节点
+						dom.scrollToElement(this.$refs[ref][0],	{ offset: 0, animated: true })
+					}		
+				})	
+			},
+			// 顶部礼物自动消失
+			autoHide () {
+				if (this.gifts.length) {
+					let timer = setTimeout(() => {
+						this.gifts.splice(0, 1)
+					}, 5000)
+				}
+			}
 		}
 	}
 </script>

@@ -22,6 +22,7 @@
 </template>
 
 <script>
+	// 对应nvue的方法
 	const dom = weex.requireModule('dom')
 	export default {
 		data () {
@@ -37,7 +38,7 @@
 		// 	},3000)
 		// },
 		methods: {
-			// 模拟送礼物
+			// 模拟送礼物，被父组件调用
 			send (gift) {
 				this.gifts.push(gift)
 				this.toBottom()
@@ -49,8 +50,9 @@
 					// 拿到最后一个索引
 					let index = this.gifts.length - 1
 					let ref = 'item' + index
+					// 如果节点存在
 					if (this.$refs[ref]) {
-						// 滚动到最后一个节点
+						// 滚动到最后一个节点（最后一个节点滚动显示出来，达到置底的目的）
 						dom.scrollToElement(this.$refs[ref][0],	{ offset: 0, animated: true })
 					}		
 				})	

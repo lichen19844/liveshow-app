@@ -63,7 +63,7 @@
 			</view>
 			<!-- 右边 -->
 			<view class="flex align-center justify-between">
-				<view class="btn mr-2" style="width:80rpx;">
+				<view class="btn mr-2" style="width:80rpx;" @click="openCoin">
 					<text class="iconfont text-white" style="font-size:40px;">&#xe633;</text>
 				</view>
 				<view class="btn mr-2 bg-warning" style="width:80rpx;" @click="openGift">
@@ -102,7 +102,18 @@
 				<swiper :indicator-dots="true" :duration="500" style="height:350rpx;box-sizing:border-box;width:750rpx;" class="border-bottom border-top">
 					<swiper-item>
 						<view class="flex flex-wrap">
-							<view style="width:187.5rpx;height:175rpx;" class="flex flex-column justify-center align-center" v-for="(item, index) in gifts" :key="index">
+							<view style="width:187.5rpx;height:175rpx;" class="flex flex-column justify-center align-center" v-for="(item, index) in gifts" :key="index" :class="giftActiveId === item.id ? 'border border-main' : ''" @click="giftActiveId = item.id">
+								<image :src="item.image" mode="" style="width:100rpx;height:100rpx;"></image>
+								<view class="flex justify-between align-center mt-1">
+									<text class="text-warning font mr-1">{{item.name}}</text>
+									<text class="text-secondary font">{{item.coin}}</text>
+								</view>
+							</view>
+						</view>
+					</swiper-item>
+					<swiper-item>
+						<view class="flex flex-wrap">
+							<view style="width:187.5rpx;height:175rpx;" class="flex flex-column justify-center align-center" v-for="(item, index) in gifts" :key="index" :class="giftActiveId === item.id ? 'border border-main' : ''" @click="giftActiveId = item.id">
 								<image :src="item.image" mode="" style="width:100rpx;height:100rpx;"></image>
 								<view class="flex justify-between align-center mt-1">
 									<text class="text-warning font mr-1">{{item.name}}</text>
@@ -113,10 +124,10 @@
 					</swiper-item>
 				</swiper>
 				<view style="height:100rpx;" class="flex align-center justify-end">
-					<view class="bg-warning flex align-center justify-center px-2 py-2 mr-3 rounded">
+					<view class="bg-warning flex align-center justify-center px-2 py-2 mr-3 rounded" @click="openCoin">
 						<text class="font">充值</text>
 					</view>
-					<view class="bg-main flex align-center justify-center px-2 py-2 mr-3 rounded">
+					<view class="bg-main flex align-center justify-center px-2 py-2 mr-3 rounded" @click="sendGift">
 						<text class="font text-white">发送</text>
 					</view>
 				</view>
@@ -140,7 +151,8 @@
 			return {
 				statusBarHeight:0,
 				content: '',
-				gifts: []
+				gifts: [],
+				giftActiveId: 0
 			}
 		},
 		onLoad() {
@@ -153,27 +165,55 @@
 		},
 		mounted () {
 			// 送礼物演示
-			setInterval(() => {
+			// setInterval(() => {
+			// 	this.$refs.gift.send({
+			// 		username: "发送人",
+			// 		avatar: "",
+			// 		gift_name: "蛋糕",
+			// 		gift_image: "/static/gift/3.png",
+			// 		num: 1
+			// 	})
+			// }, 3000)
+			
+			// 发送弹幕演示
+			// let id = 1
+			// setInterval(() => {
+			// 	this.$refs.danmu.send({
+			// 		id: id,
+			// 		name: '昵称' + id,
+			// 		content: '礼晨加油~' + id
+			// 	})
+			// 	id++
+			// }, 3000)
+		},
+		methods: {
+			openCoin () {
+				uni.navigateTo({
+					url: '../coin/coin'
+				})
+			},
+			// 发送礼物
+			sendGift () {
+				if (this.giftActiveId === 0) {
+					return uni.showToast({
+						title: '请选择要发送的礼物',
+						icon: 'none'
+					});
+				}
+				let index = this.gifts.findIndex(item => item.id === this.giftActiveId)
+				if (index === -1) {
+					return
+				}
+				let g = this.gifts[index]
 				this.$refs.gift.send({
 					username: "发送人",
 					avatar: "",
-					gift_name: "蛋糕",
-					gift_image: "/static/gift/3.png",
+					gift_name: g.name,
+					gift_image: g.image,
 					num: 1
 				})
-			}, 3000)
-			// 发送弹幕演示
-			let id = 1
-			setInterval(() => {
-				this.$refs.danmu.send({
-					id: id,
-					name: '昵称' + id,
-					content: '礼晨加油~' + id
-				})
-				id++
-			}, 3000)
-		},
-		methods: {
+				this.closeGift()
+			},
 			back () {
 				uni.navigateBack({
 					delta: 1
@@ -188,6 +228,7 @@
 			openInput () {
 				this.$refs.input.open()
 			},
+			// 发送弹幕
 			submit () {
 				// 发送内容为空则直接终止
 				if (this.content === '') {

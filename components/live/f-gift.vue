@@ -1,6 +1,6 @@
 <template>
 	<!-- 收到礼物 -->
-	<list :show-scrollbar="false" style="width:520rpx;height:500rpx;background-color:rgba(255,255,255,.2);">
+	<list :show-scrollbar="false" style="width:520rpx;height:500rpx;">
 		<cell class="flex px-3 pt-3 align-center" v-for="(item, index) in gifts" :key="index" insert-animation="default" delete-animation="default" :ref="'item'+index">
 			<!-- 显示谁送的礼物 -->
 			<view style="width:325rpx;background-image:linear-gradient(to right, #BCABB1, #65AAF0);" class="flex justify-between align-center rounded-circle">
@@ -12,7 +12,7 @@
 					<text class="text-white font-sm">送{{item.gift_name}}</text>
 				</view>
 				<view class="p">
-					<image src="/static/gift/1.png" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
+					<image :src="item.gift_image" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
 				</view>
 			</view>
 			<!-- 礼物数量 -->
@@ -57,10 +57,11 @@
 					}		
 				})	
 			},
-			// 顶部礼物自动消失
+			// 顶部礼物自动消失(先送先入数组的先消失)
 			autoHide () {
 				if (this.gifts.length) {
 					let timer = setTimeout(() => {
+						// 数组元素先进先出
 						this.gifts.splice(0, 1)
 					}, 5000)
 				}

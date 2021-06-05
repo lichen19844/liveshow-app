@@ -3,7 +3,7 @@
 		<!-- 视频源 -->
 		<video class="flex-1" src="http://ivi.bupt.edu.cn/hls/cctv2hd.m3u8" autoplay :controls="false" muted></video>
 		<!-- 头部	top值是手机设备状态栏的高度 -->
-		<view style="position: fixed;left:0;right:0;" :style="'top:' + statusBarHeight + 'px'">
+		<view style="position: fixed;left:0;right:0;" :style="'top:' + statusBarHeight + 'px;'">
 			<!-- 个人信息和观看情况 -->
 			<view style="height:80rpx;" class="px-2 flex justify-between align-center">
 				<!-- 左边 -->
@@ -52,7 +52,6 @@
 			<f-danmu ref="danmu"></f-danmu>
 		</view>
 
-		<!-- 临时关闭 -->
 		<!-- 底部，用户操作区 -->
 		<view style="position:fixed; left:0; bottom:0; right:0; height: 120rpx;" class="flex align-center justify-between">
 			<!-- 左边 -->

@@ -110,7 +110,7 @@
 			 */
 			confirm(done, value) {
 					// 输入框的值
-					console.log(value)
+					console.log('in coin page', value)
 					// TODO 做一些其他的事情，手动执行 close 才会关闭对话框
 					// ...
 					if(!value || value <= 0){
@@ -120,7 +120,8 @@
 						});
 					}
 					this.price = value
-					// done()
+					// 关闭弹窗
+					// done()  // 可以执行
 					this.$refs.popup.close()
 			}
 		}

@@ -29,7 +29,7 @@
 				<text class="iconfont text-warning mr-1">&#xe633;</text>
 				<text class="font-md font-weight-bold">{{price}}</text>
 			</view>
-			<view class="bg-main flex align-center justify-center ml-auto rounded" style="width:150rpx;height:70rpx;">
+			<view class="bg-main flex align-center justify-center ml-auto rounded" style="width:150rpx;height:70rpx;" @click="pay">
 				<text class="font-md text-white">去充值</text>
 			</view>
 		</view>
@@ -53,8 +53,8 @@
 			return {
 				activeIndex: 0,
 				list: [{
-					coin: 10,
-					price: 10
+					coin: 1,
+					price: 1
 				},{
 					coin: 20,
 					price: 20
@@ -81,6 +81,40 @@
 			}
 		},
 		methods: {
+			pay() {
+				this.$H.post('/gift/wxpay', {
+					price: this.price
+				}, {
+					token: true
+				}).then(orderInfo => {
+					console.log('get orderInfo success', orderInfo)
+					uni.requestPayment({
+						provider: "wxpay",
+						orderInfo: orderInfo,
+						success: function (res) {
+							console.log('success:' + JSON.stringify(res));
+							this.$store.dispatch('getUserInfo')
+							uni.showToast({
+								title: '充值成功',
+								icon: 'none'
+							});
+							uni.navigateBack({
+								delta: 1
+							})
+						},
+						fail: function (err) {
+							console.log('fail:' + JSON.stringify(err));
+							uni.showModal({
+								title: '提示',
+								content: '支付失败',
+								showCancel: false,
+							});
+						}
+					})
+				}).catch(err => {
+					console.log('get orderInfo fail', err)
+				})
+			},
 			chooseCoin (index) {
 				this.activeIndex = index
 				let p = this.list[index].price

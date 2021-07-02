@@ -9,7 +9,7 @@
 				</view>
 				<view class="flex-1 flex-column justify-center align-start">
 					<text class="text-white font">{{item.username}}</text>
-					<text class="text-white font-sm">送{{item.gift_name}}</text>
+					<text class="text-white font-sm">送 {{item.gift_name}}</text>
 				</view>
 				<view class="p">
 					<image :src="item.gift_image" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>

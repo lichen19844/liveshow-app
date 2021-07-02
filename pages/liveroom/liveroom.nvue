@@ -1,3 +1,4 @@
+<!-- 开直播 -->
 <template>
 	<view class="page">
 		<!-- 视频源 -->

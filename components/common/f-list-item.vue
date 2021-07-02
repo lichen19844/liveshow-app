@@ -4,6 +4,7 @@
 		<text class="font-md">{{title}}</text>
 		<view class="ml-auto">
 			<slot></slot>
+			<!-- 箭头符号 > -->
 			<text v-if="showRight" class="text-muted font ml-2">></text>
 		</view>
 	</view>

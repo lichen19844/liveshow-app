@@ -2,6 +2,7 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+			console.log('this.$store.state.ceshi', this.$store.state.ceshi)
 			const domModule = weex.requireModule('dom')
 			domModule.addRule('fontFace', {
 			    'fontFamily': "iconfont",
@@ -14,11 +15,17 @@
 			
 			// 监听底部导航中间凸起按钮
 			uni.onTabBarMidButtonTap(() => {
-				console.log('点击了中间按钮')
-				uni.navigateTo({
+				// console.log('点击了中间按钮')
+				// uni.navigateTo({
+				// 	url: '/pages/create-live/create-live'
+				// })
+				// 上面改写成这样
+				this.authJump({
 					url: '/pages/create-live/create-live'
 				})
 			})
+			// 在全局设置初始化获取用户信息
+			this.$store.dispatch('initUser')
 		},
 		onShow: function() {
 			console.log('App Show')

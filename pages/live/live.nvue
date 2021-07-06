@@ -1,4 +1,4 @@
-<!-- 进入主播直播间 -->
+<!-- 用户进入主播直播间 -->
 <template>
 	<view class="page">
 		
@@ -26,14 +26,14 @@
 				<view style="width: 325rpx;background-color: rgba(0,0,0,0.4);" class="flex rounded-circle">
 					<!-- 实时在线观看用户情况 -->
 					<scroll-view scroll-x="true" class="flex-1 flex">
-						<view class="p" v-for="i in 20" :key="i">
-							<image src="/static/tabbar/min.png" style="width: 70rpx;height: 70rpx;" class="rounded-circle"></image>
+						<view class="p" v-for="(item, index) in list" :key="index">
+							<image :src="item.avatar || '/static/tabbar/min.png'" style="width: 70rpx;height: 70rpx;" class="rounded-circle"></image>
 						</view>
 					</scroll-view>
 					<view class="p">
 						<view class="rounded-circle flex align-center justify-center bg-danger" style="width: 70rpx;height: 70rpx;">
 							<!-- 实时在线观看人数 -->
-							<text class="text-white font-sm">1000</text>
+							<text class="text-white font-sm">{{list.length}}</text>
 						</view>
 					</view>
 				</view>
@@ -155,6 +155,7 @@
 	import uniPopup from '@/components/uni-ui/uni-popup/uni-popup.vue';
 	import $H from '@/common/request.js';
 	import $C from '@/common/config.js';
+	import { mapState } from 'vuex';
 	
 	export default {
 		components: {
@@ -188,7 +189,9 @@
 				statusBarHeight:0,
 				content: '',
 				gifts: [],
-				giftActiveId: 0
+				giftActiveId: 0,
+				// 在线用户列表
+				list: []
 			}
 		},
 		onLoad(e) {
@@ -205,13 +208,20 @@
 			
 			$H.get('/gift/list').then(res=>{
 				this.gifts = res.map(item=>{
-					item.image = $C.baseUrl + item.image
+					// item.image = $C.baseUrl_one + item.image
+					item.image = $C.baseUrl_two + item.image
 					return item
 				})
 			})
 			// 礼物演示
 			// this.gifts = demoGifts
 			
+			// 处理最终到达这里的后端用户列表数据
+			// uni.$on('live', (e) => {
+			// 	console.log('live e', e)
+			// })
+			// 监听全局事件
+			uni.$on('live', this.handleLiveEvent)
 		},
 		mounted() {
 			// 送礼物演示
@@ -235,6 +245,15 @@
 			// 	})
 			// 	id++
 			// },3000)
+			
+			// 页面加载时加入直播间
+			this.joinOrLeaveLive('join')
+		},
+		// 页面销毁时离开直播间
+		destroyed() {
+			this.joinOrLeaveLive('leave')
+			// 移除全局事件
+			uni.$off('live', this.handleLiveEvent)
 		},
 		computed: {
 			src() {
@@ -242,9 +261,39 @@
 					return ''
 				}
 				return `http://192.168.1.7:23481/live/${this.detail.key}.flv?sign=${this.sign}`
-			}
+			},
+			...mapState({
+				socket: state => state.socket,
+				token: state => state.token
+			})
 		},
+		
 		methods: {
+			// 处理最终到达这里的后端用户列表数据
+			handleLiveEvent(e) {
+				let d = e.data
+				switch (e.type){
+					case 'online':
+					// 加入时渲染页面，退出则不管
+					if(d.action === 'join') {
+						this.list = d.data
+					}
+						break;
+					default:
+						break;
+				}
+			},
+			// 加入或离开直播间时，把live_id和用户token传给后端路由对应的方法里去
+			joinOrLeaveLive(type) {
+				if(this.socket && this.token) {
+					this.socket.emit(type + 'Live', {
+						live_id: this.id,
+						token: this.token
+					})
+				}
+			},
+			
+			// 送礼物
 			sendGift(){
 				// 如果没有选中礼物
 				if(this.giftActiveId === 0){
@@ -268,22 +317,27 @@
 				})
 				this.closeGift()
 			},
+			
 			back(){
 				uni.navigateBack({
 					delta: 1
 				});
 			},
+			
 			openGift(){
 				this.$refs.giftPopup.open()
 			},
+			
 			closeGift(){
 				this.$refs.giftPopup.close()
 			},
+			
 			openInput(){
 				this.$store.dispatch('authMethod',()=>{
 					this.$refs.input.open()
 				})
 			},
+			
 			submit(){
 				if(this.content === ''){
 					return
@@ -296,6 +350,7 @@
 				this.content = ''
 				this.$refs.input.close()
 			},
+			
 			openCoin(){
 				uni.navigateTo({
 					url: '../coin/coin'

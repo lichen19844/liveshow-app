@@ -82,38 +82,42 @@
 		},
 		methods: {
 			pay() {
-				this.$H.post('/gift/wxpay', {
-					price: this.price
-				}, {
-					token: true
-				}).then(orderInfo => {
-					console.log('get orderInfo success', orderInfo)
-					uni.requestPayment({
-						provider: "wxpay",
-						orderInfo: orderInfo,
-						success: function (res) {
-							console.log('success:' + JSON.stringify(res));
-							this.$store.dispatch('getUserInfo')
-							uni.showToast({
-								title: '充值成功',
-								icon: 'none'
-							});
-							uni.navigateBack({
-								delta: 1
-							})
-						},
-						fail: function (err) {
-							console.log('fail:' + JSON.stringify(err));
-							uni.showModal({
-								title: '提示',
-								content: '支付失败',
-								showCancel: false,
-							});
-						}
-					})
-				}).catch(err => {
-					console.log('get orderInfo fail', err)
-				})
+				this.$H.post(
+					'/gift/wxpay', 
+					{
+						price: this.price
+					}, 
+					{
+						token: true
+					}).then(orderInfo => {
+						console.log('get orderInfo success', orderInfo)
+						uni.requestPayment({
+							provider: "wxpay",
+							orderInfo: orderInfo,
+							success: function (res) {
+								console.log('success:' + JSON.stringify(res));
+								this.$store.dispatch('getUserInfo')
+								uni.showToast({
+									title: '充值成功',
+									icon: 'none'
+								});
+								uni.navigateBack({
+									delta: 1
+								})
+							},
+							fail: function (err) {
+								console.log('fail:' + JSON.stringify(err));
+								uni.showModal({
+									title: '提示',
+									content: '支付失败',
+									showCancel: false,
+								});
+							}
+						})
+					}).catch(err => {
+						console.log('get orderInfo fail', err)
+					}
+				)
 			},
 			chooseCoin (index) {
 				this.activeIndex = index

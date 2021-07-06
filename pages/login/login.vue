@@ -57,7 +57,7 @@
 							repassword: ''
 						}
 					} else {
-						// 登录成功后，顺便使用vuex的方法接收要存的数据，做进一步处理
+						// 登录成功后，顺便使用vuex的方法接收要存的数据(拿到token)，做进一步处理
 						this.$store.dispatch('login', res)
 						uni.navigateBack({
 							delta: 1

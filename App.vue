@@ -2,6 +2,8 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+			// 项目启动时就连接socket.io
+			this.$store.dispatch('connectSocket')
 			console.log('this.$store.state.ceshi', this.$store.state.ceshi)
 			const domModule = weex.requireModule('dom')
 			domModule.addRule('fontFace', {

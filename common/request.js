@@ -5,7 +5,8 @@ export default {
 	common: {
 		// #ifndef H5
 		// baseUrl: "http://127.0.0.1:7001",
-		baseUrl: $C.baseUrl + "/api",
+		// baseUrl: $C.baseUrl_one + "/api",
+		baseUrl: $C.baseUrl_two + "/api",
 		// #endif
 		// #ifdef H5
 		// baseUrl: "/api",

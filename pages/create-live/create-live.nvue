@@ -1,3 +1,4 @@
+<!-- 主播在直播前预览 -->
 <template>
 	<view>
 		<live-pusher

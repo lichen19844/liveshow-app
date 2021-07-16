@@ -50,6 +50,7 @@
 <script>
 	import fListItem from '@/components/common/f-list-item.vue';
 	import { mapState } from 'vuex';
+	
 	export default {
 		components: {
 			fListItem

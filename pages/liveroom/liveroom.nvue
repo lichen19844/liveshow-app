@@ -7,7 +7,7 @@
 			id="livePusher"
 			ref="livePusher"
 			class="livePusher"
-			url="url"
+			:url="src"
 			mode="mode"
 			:muted="true"
 			:enable-camera="enableCamera"
@@ -30,11 +30,11 @@
 				<!-- 左边 -->
 				<view style="width:325rpx;background-color:rgba(0,0,0,.4);" class="flex justify-between align-center rounded-circle">
 					<view class="p">
-						<image src="/static/tabbar/min.png" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
+						<image :src="user.avatar || '/static/tabbar/min.png'" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
 					</view>
 					<view class="flex-1 flex-column justify-center align-start">
-						<text class="text-white font">昵称</text>
-						<text class="text-white font-sm">1000</text>
+						<text class="text-white font">{{user.nickname || user.username}}</text>
+						<text class="text-white font-sm">{{detail.look_count}}</text>
 					</view>
 					<view class="p">
 						<view class="rounded-circle flex justify-center align-center bg-danger" style="width:70rpx;height:70rpx;">
@@ -45,13 +45,13 @@
 				<!-- 右边 -->
 				<view style="width:325rpx;background-color:rgba(0,0,0,.4);" class="flex justify-between align-center rounded-circle">
 					<scroll-view scroll-x="true" class="flex flex-1">
-						<view class="p" v-for="i in 20" :key="i">
-							<image src="/static/tabbar/min.png" mode="" style="width:70rpx;height:70rpx;" class="rounded-circle"></image>
+						<view class="p" v-for="(item, index) in list" :key="index">
+							<image :src="item.avatar || '/static/tabbar/min.png'" style="width: 70rpx;height: 70rpx;" class="rounded-circle"></image>
 						</view>
 					</scroll-view>
 					<view class="p">
 						<view class="rounded-circle flex justify-center align-center bg-danger" style="width:70rpx;height:70rpx;">
-							<text class="text-white font-sm">1000</text>
+							<text class="text-white font-sm">{{list.length}}</text>
 						</view>
 					</view>
 				</view>
@@ -63,7 +63,7 @@
 						<text class="font-lg text-warning">金币</text>
 					</view>
 					<view class="flex-1 flex-column justify-center align-start">
-						<text class="text-white font">100</text>
+						<text class="text-white font">{{ detail.coin }}</text>
 					</view>
 				</view> 
 			</view>
@@ -110,9 +110,9 @@
 				<view v-else-if="popupType === 'whiteness'"><slider :min="0" :max="9" :step="1" :value="whiteness" :block-size="18" show-value @change="handleSliderChange" /></view>
 				<!-- 更多 -->
 				<view v-else class="flex flex-wrap">
-					<view class="flex flex-column align-center justify-center" style="width:150rpx;height:150rpx;">
+					<view class="flex flex-column align-center justify-center" style="width:150rpx;height:150rpx;" @click="pauseOrPlay">
 						<text class="iconfont  mb-1" style="">&#xe611;</text>
-						<text class=" font">暂停</text>
+						<text class=" font">{{isPause ? '继续' : '暂停'}}</text>
 					</view>
 					<view class="flex flex-column align-center justify-center" style="width:150rpx;height:150rpx;" @click="back">
 						<text class="iconfont  mb-1" style="">&#xe64d;</text>
@@ -129,8 +129,12 @@
 <script>
 	import fGift from '@/components/live/f-gift.vue';
 	import fDanmu from '@/components/live/f-danmu.vue';
-	import demoGifts from '@/demo/gifts.js';
+	// import demoGifts from '@/demo/gifts.js';
 	import uniPopup from '@/components/uni-ui/uni-popup/uni-popup.vue';
+	import { mapState } from 'vuex';
+	import $H from '@/common/request.js';
+	import $C from '@/common/config.js';
+	
 	export default {
 		components: {
 			fGift,
@@ -144,7 +148,7 @@
 				gifts: [],
 				giftActiveId: 0,
 				
-				url: '',
+				// url: '',
 				mode: 'SD',
 				enableCamera: true,
 				position: 'front', // front	back
@@ -192,7 +196,33 @@
 					icon: '\ue84b',
 					event: 'openPopup',
 					params: 'more'
-				}]
+				}],
+				detail: {
+					"created_time": "",
+					"id": 0,
+					"title": "",
+					"cover": "",
+					"user_id": 0,
+					"look_count": 0,
+					"coin": 0,
+					"key": "",
+					"status": 0,
+					"updated_time": null,
+					"deleted_time": null,
+					"userId": 0,
+					"user": {
+						"id": 0,
+						"username": "",
+						"avatar": ""
+					}
+				},
+				sign: '',
+				list: [],
+				// 是否开启、暂停推流
+				isStart: false,
+				isPause: false,
+				// 防止不小心按到手机返回键退出的标识，为true标识用户自己的意愿要退出
+				isget: false,
 			}
 		},
 		onLoad(e) {
@@ -201,14 +231,37 @@
 			this.windowHeight = res.windowHeight;
 			this.statusBarHeight = res.statusBarHeight
 			// 礼物演示
-			this.gifts = demoGifts
-			let options = e.options
-			this.mode = options.mode
-			this.position = options.position
-			this.beauty = options.beauty
-			this.whiteness = options.whiteness
+			// this.gifts = demoGifts
+			if(e.options) {
+				console.log('e.options', e.options)
+				let options = JSON.parse(e.options)
+				this.mode = options.mode
+				this.position = options.position
+				this.beauty = options.beauty
+				this.whiteness = options.whiteness
+			}
+			if(e.data) {
+				console.log('e.data', e.data)
+				let d = JSON.parse(decodeURIComponent(e.data))
+				this.detail = d.data
+				this.sign = d.sign
+			}
+			// 监听全局事件(由uni.$emit触发)，虽然放在加载一次页面的onload里，但是由于是监听功能，回调函数handleLiveEvent可以根据需求实时更新页面数据
+			uni.$on('live', this.handleLiveEvent)
 		},
 		computed: {
+			// 直播拉流地址，多个属性影响一个属性时使用computed
+			src() {
+				if(this.detail.key == '' || this.sign == ''){
+					return ''
+				}
+				return `http://192.168.1.7:23480/live/${this.detail.key}?sign=${this.sign}`
+			},
+			...mapState({
+				user: state => state.user,
+				socket: state => state.socket,
+				token: state => state.token
+			}),
 			popupTitle() {
 				let o = {
 					mode: '画质',
@@ -223,6 +276,8 @@
 			// 注意：需要在onReady中 或 onLoad 延时
 			this.context = uni.createLivePusherContext('livePusher', this);
 			this.startPreview();
+			// 开始推流
+			this.start()
 		},
 		mounted () {
 			// 送礼物演示
@@ -246,22 +301,191 @@
 			// 	})
 			// 	id++
 			// }, 3000)
+			
+			// 页面加载时加入直播间
+			// this.joinOrLeaveLive('join')
 		},
+		// 页面销毁时离开直播间
+		destroyed() {
+			this.joinOrLeaveLive('leave')
+			// 移除全局事件
+			uni.$off('live', this.handleLiveEvent)
+		},
+		// 监听手机返回按钮
+		onBackPress() {
+			// 不小心触发返回键
+			if(!this.isget) {
+				this.back()
+				return true
+			}
+		},
+		
 		methods: {
+			pauseOrPlay() {
+				// 没有暂停时点击，出弹框选择是否暂停
+				if(!this.isPause) {
+					let _t = this
+					// 输入uconfirm出现以下代码格式
+					return uni.showModal({
+						content: '是否要暂停推流？',
+						success: (res) => {
+							if (res.confirm) {
+								_t.pause()	
+							} else if (res.cancel) {
+								return
+							}
+						}
+					});
+				}
+				// 暂停时点击则继续
+				this.resume()
+			},
+			// 退出直播
+			back() {
+				let _t = this
+				uni.showModal({
+					content: '是否要结束当前直播？',
+					success: function (res) {
+						if (res.confirm) {
+							_t.stop()
+							// 防止不小心按到手机返回键退出的标识，为true标识用户自己的意愿要退出
+							this.isget = true
+							// 这里有bug，无法正常返回
+							console.log('test back to index page')
+							// uni.navigateBack({ delta: 1 })
+							uni.switchTab({
+								url: '/pages/index/index',
+								// success: res => {},fail: () => {},complete: () => {}
+							})
+							uni.showToast({
+								title: '退出直播间成功',
+								icon: 'none'
+							});
+						} else if (res.cancel) {
+							return
+						}
+					}
+				});
+			},
+			
+			// 开始推流
+			start() {
+				this.context.start({
+					success: () => {
+						this.isStart = true
+						$H.post('/live/changestatus', {
+							id: this.detail.id,
+							type: 'play',
+						},{
+							token: true
+						}).then(res => {
+							// 把主播自己加入观看列表中，同时防止掉线
+							this.joinOrLeaveLive('join')
+						}).catch(err => {
+							console.log(err)
+						})
+					}
+				})
+			},
+			// 暂停推流
+			pause() {
+				this.context.pause({
+					success: () => {
+						this.isPause = true
+						$H.post('/live/changestatus', {
+							id: this.detail.id,
+							type: 'pause',
+						},{
+							token: true
+						})
+					}
+				})
+			},
+			// 继续推流
+			resume() {
+				this.context.resume({
+					success: () => {
+						this.isPause = false
+						$H.post('/live/changestatus', {
+							id: this.detail.id,
+							type: 'play',
+						},{
+							token: true
+						})
+					}
+				})
+			},
+			// 停止推流
+			stop() {
+				this.context.stop({
+					success: () => {
+						this.isStart = false
+						$H.post('/live/changestatus', {
+							id: this.detail.id,
+							type: 'stop',
+						},{
+							token: true
+						})
+					}
+				})
+			},
+			
+			// 处理最终到达这里的后端用户列表数据
+			handleLiveEvent(e) {
+				console.log('handleLiveEvent data', e)
+				let d = e.data
+				switch (e.type){
+					case 'online':
+					// 加入时渲染页面，退出则不管
+					if(d.action === 'join') {
+						this.list = d.data
+						this.list.map(item => {
+							// item.avatar = $C.imageUrl_one + item.avatar
+							item.avatar = $C.imageUrl_two + item.avatar
+						})
+					}
+						break;
+						
+					case 'comment':
+						this.$refs.danmu.send({
+							// id: d.user.id,  // 如果使用user.id，那么当该用户连续发言时，scroll-into-view就不能定位到相应的item.id的view子组件
+							id: d.id,
+							name: d.user.name,
+							content: d.content
+						})
+						break;
+						
+					case 'gift':
+            // d.gift_image = $C.imageUrl_one + d.gift_image
+						// d.avatar = $C.imageUrl_one + d.avatar
+						d.gift_image = $C.imageUrl_two + d.gift_image
+						d.avatar = $C.imageUrl_two + d.avatar
+						// detail.coin由于处于监听函数中，所以不受onload的影响，可以实时更新其显示
+						this.detail.coin += d.gift_coin * d.num
+						// this.detail.look_count += 1
+						this.$refs.gift.send(d)
+						break;
+						
+					default:
+						break;
+				}
+			},
+			
+			// 加入或离开直播间时，把live_id和用户token传给后端路由对应的方法里去
+			joinOrLeaveLive(type) {
+				if(this.socket && this.token) {
+					this.socket.emit(type + 'Live', {
+						live_id: this.detail.id,
+						token: this.token
+					})
+				}
+			},
+			
 			handleBottomEvent(item) {
 				// 会去调用this.switchCamera()或this.openPopup(type)，item.params作为type
 				this[item.event](item.params)
 			},
-			back () {
-				uni.showModal({
-					content: '是否要结束当前直播？',
-					success: (res) => {
-						if (res.confirm) {
-							uni.navigateBack({ delta: 1 })
-						}
-					}
-				})
-			},
+			
 			// 画质选择
 			chooseMode(item) {
 				this.mode = item.type;

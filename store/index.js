@@ -38,7 +38,27 @@ export default new Vuex.Store({
 					// 拿到数据
 					data: e
 				})
-			}
+			};
+			
+			let commentEvent = (e) => {
+				// 通过uniapp的emit和on机制传递数据
+				uni.$emit('live', 
+				// 自定义传参
+				{
+					type: 'comment',
+					// 拿到数据
+					data: e
+				})
+			};
+			
+			let giftEvent = (e) => {
+				console.log('gift e', e)
+				uni.$emit('live',
+				{
+					type: 'gift',
+					data: e
+				})
+			};
 			
 			// 监听连接
 			SKT.on('connect', () => {
@@ -52,6 +72,7 @@ export default new Vuex.Store({
 				state.socket = SKT
 				const { id } = SKT
 				console.log('socket id', id)
+				
 				// socket.io通过连接的唯一id，接收后端传过来的数据，可以监控这个id实现点对点通讯
 				// 拿到监听后返回的数据，在前端展示
 				SKT.on(id, res => {
@@ -71,26 +92,34 @@ export default new Vuex.Store({
 				});
 				
 				// 监听直播中的直播间在线用户信息
-				
 				// SKT.on('online', (e) => {
 				// 	console.log('online info', e)
 				// 	// 要拿e数据
 				// 	uni.$emit('live', { data: e })
 				// })
-				
 				// 注册onlineEvent函数方法，后端socket接收来的数据传递到onlineEvent函数
 				SKT.on('online', onlineEvent);
+				
+				// 监听评论
+				SKT.on('comment', commentEvent);
+				
+				// 监听送礼物
+				SKT.on('gift', giftEvent);
+				
 			});
 			
 			// 移除监听事件
 			const removeListener = () => {
 				if(SKT) {
 					SKT.removeListener('online', onlineEvent)
+					SKT.removeListener('comment', commentEvent)
+					SKT.removeListener('gift', giftEvent)
 				}
 			};
 			
 			// 监听失败
-			SKT.on('error', () => {
+			SKT.on('error', (e) => {
+				console.log('连接失败', e)
 				removeListener()
 				// 一旦发现连接失败，就清空state.socket
 				state.socket = null
@@ -152,6 +181,9 @@ export default new Vuex.Store({
 		login({state}, user) {
 			console.log('user', user)
 			// 储存在vuex
+			// user.avatar = $C.imageUrl_one + user.avatar
+			user.avatar = $C.imageUrl_two + user.avatar
+			console.log('online user', user)
 			state.user = user
 			state.token = user.token
 			// 储存在本地
@@ -168,8 +200,10 @@ export default new Vuex.Store({
 					noJump: true,	// 获取不到token时不需要跳转登录页
 					toast: false	// 获取不到token时不显示服务端失败提示
 				}).then(res => {
-					// console.log('getUserInfo', res)
+					console.log('getUserInfo', res)
 					// 覆盖state和本地储存
+					// res.avatar = $C.imageUrl_one + res.avatar
+					res.avatar = $C.imageUrl_two + res.avatar
 					state.user = res
 					uni.setStorage({
 						key: 'user',

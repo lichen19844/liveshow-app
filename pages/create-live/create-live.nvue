@@ -23,15 +23,17 @@
 
 		<view v-if="showBars">
 			<view style="position:fixed;left:0;right:0;height:550rpx;" :style="'top:' + statusBarHeight + 'px;'">
-				<view class="flex align-center justify-center" style="width:90rpx;height:90rpx;"><text class="iconfont text-white">&#xe607;</text></view>
+				<view class="flex align-center justify-center" style="width:90rpx;height:90rpx;" @click="back">
+					<text class="iconfont text-white">&#xe607;</text>
+				</view>
 				<view class="position-absolute rounded p-2 flex align-center" style="left:90rpx;right:100rpx;height:160rpx;background-color:rgba(0,0,0,0.2);">
-					<view style="width:120rpx;height:120rpx;" class="position-relative rounded bg-white">
-						<image src="../../static/gift/3.png" mode="" style="width:120rpx;height:120rpx;"></image>
+					<view style="width:120rpx;height:120rpx;" class="position-relative rounded bg-white" @click='chooseCover'>
+						<image :src="form.cover || '/static/gift/3.png'" mode="" style="width:120rpx;height:120rpx;"></image>
 						<text class="text-white font position-absolute" style="left:0;bottom:0;">更换封面</text>
 					</view>
 					<view class="flex-1 ml-2">
-						<input type="text" value="" placeholder="请输入直播标题" class="mb-2" />
-						<text class="text-white font">#请选择分类</text>
+						<input type="text" v-model="form.title" placeholder="请输入直播标题" class="mb-2" />
+						<!-- <text class="text-white font">#请选择分类</text> -->
 					</view>
 				</view>
 				<view class="position-absolute right-0 flex flex-column" style="width:100rpx;">
@@ -96,6 +98,9 @@
 
 <script>
 import uniPopup from '@/components/uni-ui/uni-popup/uni-popup.vue';
+import $H from '@/common/request.js';
+import $C from '@/common/config.js';
+
 export default {
 	components: {
 		uniPopup
@@ -105,7 +110,7 @@ export default {
 			url: '',
 			mode: 'SD',
 			enableCamera: true,
-			position: 'front', // front	back
+			position: 'front', // 摄像头位置	front	back
 			beauty: 0,
 			whiteness: 0,
 			windowHeight: 0,
@@ -126,7 +131,11 @@ export default {
 				}
 			],
 			popupType: 'mode',
-			showBars: true
+			showBars: true,
+			form: {
+				title: '',
+				cover: ''
+			}
 		};
 	},
 	onLoad() {
@@ -153,6 +162,34 @@ export default {
 		this.showBars = false
 	},
 	methods: {
+		// 
+		chooseCover() {
+			uni.chooseImage({
+				count: 1,
+				success: (res) => {
+					// console.log(res)
+					$H.upload(
+					'/upload',  // 走/api/upload路由
+					{
+						filePath: res.tempFilePaths[0]
+					},
+					(p) => {
+						// 上传进度
+						console.log('upload progress', p);
+					}).then(res => {
+						// 上传结果
+						// console.log('upload res', res)
+						this.form.cover = $C.imageUrl_two + res.url
+					})
+				}
+			})
+		},
+		// 返回上一页
+		back() {
+			uni.navigateBack({
+				delta: 1
+			});
+		},
 		// 画质选择
 		chooseMode(item) {
 			this.mode = item.type;
@@ -205,15 +242,32 @@ export default {
 			this[this.popupType] = e.detail.value;
 		},
 		openLiveRoom () {
-			uni.navigateTo({
-				url: '../liveroom/liveroom?options=' + JSON.stringify({
+			// if(!this.form.title) {
+			// 	uni.showToast({
+			// 		title: '直播间标题不能为空',
+			// 		icon: 'none'
+			// 	})
+			// 	return
+			// }
+			$H.post('/live/create', this.form, {
+				token: true
+			}).then(res => {
+				console.log('create liveroom res', res)
+				let options = {
 					mode: this.mode,
 					position: this.position,
 					beauty: this.beauty,
 					whiteness: this.whiteness
-				})
-			})
-		}
+				}
+				options= JSON.stringify(options)
+				res = encodeURIComponent(JSON.stringify(res))
+				uni.navigateTo({
+					url: `../liveroom/liveroom?options=${options}&data=${res}`,
+					// url: `../liveroom/liveroom?options=${JSON.stringify(options)}` + `&data=${encodeURIComponent(JSON.stringify(res))}`,
+					// url: `../liveroom/liveroom?options=1&data=2`,  // test
+				});
+			});
+		},
 	}
 };
 </script>

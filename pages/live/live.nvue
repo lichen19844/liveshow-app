@@ -155,6 +155,7 @@
 	import uniPopup from '@/components/uni-ui/uni-popup/uni-popup.vue';
 	import $H from '@/common/request.js';
 	import $C from '@/common/config.js';
+	
 	import { mapState } from 'vuex';
 	
 	export default {
@@ -203,9 +204,12 @@
 			
 			$H.get('/live/read/' + this.id).then(res=>{
 				this.detail = res.data
+				// this.detail.user.avatar = $C.imageUrl_one + this.detail.user.avatar
+        this.detail.user.avatar = $C.imageUrl_two + this.detail.user.avatar
+				console.log('live detail data', this.detail)
 				this.sign = res.sign
 			})
-			
+				
 			$H.get('/gift/list').then(res=>{
 				this.gifts = res.map(item=>{
 					// item.image = $C.baseUrl_one + item.image
@@ -220,7 +224,7 @@
 			// uni.$on('live', (e) => {
 			// 	console.log('live e', e)
 			// })
-			// 监听全局事件
+			// 监听全局事件(由uni.$emit触发)，虽然放在加载一次页面的onload里，但是由于是监听功能，回调函数handleLiveEvent可以根据需求实时更新页面数据
 			uni.$on('live', this.handleLiveEvent)
 		},
 		mounted() {
@@ -256,6 +260,7 @@
 			uni.$off('live', this.handleLiveEvent)
 		},
 		computed: {
+			// 直播拉流地址，多个属性影响一个属性时使用computed
 			src() {
 				if(this.detail.key == '' || this.sign == ''){
 					return ''
@@ -265,25 +270,67 @@
 			...mapState({
 				socket: state => state.socket,
 				token: state => state.token
-			})
+			}),
 		},
 		
 		methods: {
+			
 			// 处理最终到达这里的后端用户列表数据
 			handleLiveEvent(e) {
+				console.log('handleLiveEvent data', e)
 				let d = e.data
 				switch (e.type){
 					case 'online':
 					// 加入时渲染页面，退出则不管
 					if(d.action === 'join') {
 						this.list = d.data
+						this.list.map(item => {
+							// item.avatar = $C.imageUrl_one + item.avatar
+							item.avatar = $C.imageUrl_two + item.avatar
+						})
 					}
 						break;
+						
+					case 'comment':
+						this.$refs.danmu.send({
+							// id: d.user.id,  // 如果使用user.id，那么当该用户连续发言时，scroll-into-view就不能定位到相应的item.id的view子组件
+							id: d.id,
+							name: d.user.name,
+							content: d.content
+						})
+						
+						// 发送成功后触发
+						this.content = ''
+						this.$refs.input.close()
+						break;
+						
+					case 'gift':
+            // d.gift_image = $C.imageUrl_one + d.gift_image
+						// d.avatar = $C.imageUrl_one + d.avatar
+						d.gift_image = $C.imageUrl_two + d.gift_image
+						d.avatar = $C.imageUrl_two + d.avatar
+						// detail.coin由于处于监听函数中，所以不受onload的影响，可以实时更新其显示
+						this.detail.coin += d.gift_coin * d.num
+						// this.detail.look_count += 1
+						this.$refs.gift.send(
+							// {
+							// 	username: this.$store.state.user.username,	//  "发送人"
+							// 	avatar: this.$store.state.user.avatar || "",
+							// 	gift_name: g.name,
+							// 	gift_image: g.image,
+							// 	num:1
+							// }
+							d
+						)
+						this.closeGift()
+						break;
+						
 					default:
 						break;
 				}
 			},
-			// 加入或离开直播间时，把live_id和用户token传给后端路由对应的方法里去
+			
+			// 用户加入或离开直播间时，把live_id和用户token传给后端路由对应的方法里去
 			joinOrLeaveLive(type) {
 				if(this.socket && this.token) {
 					this.socket.emit(type + 'Live', {
@@ -306,16 +353,36 @@
 				if(index === -1){
 					return
 				}
+				// 找到具体礼物
 				let g = this.gifts[index]
+				if(!this.token && !this.socket) {
+					uni.navigateTo({
+						url: '../login/login'
+					})
+					return uni.showToast({
+						title: '请先登录',
+						icon: 'none'
+					});
+				};
+				// 通过socket发送数据标识到后端，后端通过路由gift和其方法里ctx.args[0]接收
+				if(this.socket) {
+					// console.log(this.id, g.id, this.token)
+					this.socket.emit('gift', {
+						live_id: this.id,
+						gift_id: g.id,
+						token: this.token
+					})
+				};
+				
 				// console.log(this.$store.state.user)
-				this.$refs.gift.send({
-					username: this.$store.state.user.username,	//  "发送人"
-					avatar: this.$store.state.user.avatar || "",
-					gift_name: g.name,
-					gift_image: g.image,
-					num:1
-				})
-				this.closeGift()
+				// this.$refs.gift.send({
+				// 	username: this.$store.state.user.username,	//  "发送人"
+				// 	avatar: this.$store.state.user.avatar || "",
+				// 	gift_name: g.name,
+				// 	gift_image: g.image,
+				// 	num:1
+				// })
+				// this.closeGift()
 			},
 			
 			back(){
@@ -338,17 +405,42 @@
 				})
 			},
 			
+			// 发送弹幕
 			submit(){
+				if(!this.token && !this.socket) {
+					uni.navigateTo({
+						url: '../login/login'
+					})
+					return uni.showToast({
+						title: '请先登录',
+						icon: 'none'
+					});
+				};
+				
 				if(this.content === ''){
-					return
-				}
-				this.$refs.danmu.send({
-					id:Math.random()*100,
-					name:this.$store.state.user.username,	// "昵称"
-					content:this.content
-				})
-				this.content = ''
-				this.$refs.input.close()
+					return uni.showToast({
+						title: '评论内容不能为空',
+						icon: 'none'
+					});
+				};
+				
+				if(this.socket) {
+					this.socket.emit('comment', {
+						live_id: this.id,
+						token: this.token,
+						data: this.content
+					})
+				};
+				
+				// this.$refs.danmu.send({
+				// 	id:Math.random()*100,
+				// 	name:this.$store.state.user.username,	// "昵称"
+				// 	content:this.content
+				// })
+				
+				// 发送成功后触发
+				// this.content = ''
+				// this.$refs.input.close()
 			},
 			
 			openCoin(){

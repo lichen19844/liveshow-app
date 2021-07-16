@@ -112,6 +112,7 @@ export default {
 		return this.request(options)
 	},
 	// 上传文件
+	// onProgress = false 实际预留的是个回调函数
 	upload(url, data, onProgress = false) {
 		return new Promise((result, reject) => {
 			// 上传
@@ -135,7 +136,9 @@ export default {
 					token
 				},
 				formData: data.formData || {},
+				// success接收apiSuccess的结果作为参数
 				success: (res) => {
+					console.log('request upload', res)
 					if (res.statusCode !== 200) {
 						result(false)
 						return uni.showToast({
@@ -144,6 +147,7 @@ export default {
 						});
 					}
 					let message = JSON.parse(res.data)
+					console.log('message', message)
 					result(message.data);
 				},
 				fail: (err) => {
@@ -154,6 +158,7 @@ export default {
 
 			uploadTask.onProgressUpdate((res) => {
 				if (typeof onProgress === 'function') {
+					console.log('onProgress res', res)
 					onProgress(res.progress)
 				}
 			});
